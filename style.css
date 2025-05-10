@@ -1,0 +1,194 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #c28f98; /* Rosa bebê */
+  font-family: Arial, sans-serif;
+  position: relative;
+  padding: 20px 0;
+}
+
+.heart {
+  position: fixed; /* Mudei para fixed para que os corações caiam em relação à janela */
+  font-size: 20px;
+  color: #ff4d4d;
+  opacity: 0.8;
+  animation: fall linear forwards;
+  pointer-events: none; /* Para evitar que os corações interfiram na interação */
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-10vh); /* Começa acima da tela */
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(110vh); /* Termina abaixo da tela */
+    opacity: 0;
+  }
+}
+
+.quote {
+  color: #ffffff; /* Ajustei a cor para contrastar com o fundo rosa */
+  font-size: 28px;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 30px;
+  z-index: 1;
+  max-width: 80%;
+}
+
+.music-player {
+  display: flex;
+  align-items: center;
+  background-color: #722294;
+  padding: 10px;
+  border-radius: 5px;
+  width: 300px;
+  margin-bottom: 20px;
+  z-index: 1;
+}
+
+.music-player img {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.music-info {
+  flex-grow: 1;
+  color: white;
+}
+
+.music-info p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.music-info .song-title {
+  font-weight: bold;
+}
+
+.music-info .artist {
+  color: #ffffff;
+  font-size: 12px;
+}
+
+.music-controls button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.slideshow {
+  width: 300px;
+  height: 420px;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.slideshow img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slideshow img.active {
+  opacity: 1;
+}
+
+.text {
+  color: #fffefe; /* Ajustei a cor para contrastar com o fundo rosa */
+  margin-top: 20px;
+  font-size: 24px;
+  text-align: center;
+  z-index: 1;
+}
+
+.text-lindinha {
+  color: #ffffff; /* Ajustei a cor para contrastar com o fundo rosa */
+  margin-top: 20px;
+  font-size: 18px;
+  text-align: center;
+  text-align: justify;
+  width: 60%;
+  z-index: 1;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.buttons {
+  margin-top: 20px;
+  z-index: 1;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 15px; /* Bordas mais arredondadas */
+  transition: transform 0.2s, box-shadow 0.2s; /* Animação suave */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+#yesBtn {
+  background-color: #ff6f91; /* Rosa mais escuro para o "Sim" */
+  color: white;
+}
+
+#yesBtn:hover {
+  transform: scale(1.05); /* Leve aumento ao passar o mouse */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra mais intensa */
+}
+
+#noBtn {
+  background-color: #d3d3d3; /* Cinza claro para o "Não" */
+  color: #d31414;
+  cursor: not-allowed;
+}
+
+.message {
+  display: none;
+  color: #ff4d4d; /* Ajustei a cor para combinar com o tema */
+  margin-top: 20px;
+  font-size: 20px;
+  text-align: center;
+  z-index: 1;
+}
+
+.love-message {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 111, 145, 0.9); /* Fundo rosa semi-transparente */
+  color: white;
+  padding: 20px 40px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  animation: fadeInOut 3s ease-in-out forwards;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
