@@ -7,91 +7,111 @@ body {
   background-color: #c28f98; /* Rosa bebê */
   font-family: Arial, sans-serif;
   position: relative;
-  padding: 20px 0;
+  padding: clamp(15px, 4vw, 20px) 0;
+  box-sizing: border-box;
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-top: env(safe-area-inset-top);
 }
 
 .heart {
-  position: fixed; /* Mudei para fixed para que os corações caiam em relação à janela */
-  font-size: 20px;
+  position: fixed;
+  font-size: clamp(14px, 3.5vw, 16px); /* Tamanho mais delicado */
   color: #ff4d4d;
-  opacity: 0.8;
+  opacity: 0.7;
   animation: fall linear forwards;
-  pointer-events: none; /* Para evitar que os corações interfiram na interação */
+  pointer-events: none;
 }
 
 @keyframes fall {
   0% {
-    transform: translateY(-10vh); /* Começa acima da tela */
-    opacity: 0.8;
+    transform: translateY(-10vh);
+    opacity: 0.7;
   }
   100% {
-    transform: translateY(110vh); /* Termina abaixo da tela */
+    transform: translateY(110vh);
     opacity: 0;
   }
 }
 
 .quote {
-  color: #ffffff; /* Ajustei a cor para contrastar com o fundo rosa */
-  font-size: 28px;
+  color: #ffffff;
+  font-size: clamp(18px, 5.5vw, 22px); /* Tamanho mais elegante */
   font-style: italic;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: clamp(15px, 4vw, 20px);
   z-index: 1;
-  max-width: 80%;
+  max-width: 90%;
+  line-height: 1.5; /* Melhor legibilidade */
+  padding: 0 clamp(10px, 2vw, 15px);
 }
 
 .music-player {
   display: flex;
   align-items: center;
-  background-color: #722294;
-  padding: 10px;
-  border-radius: 5px;
-  width: 300px;
-  margin-bottom: 20px;
+  background-color: #722294; /* Cor original */
+  padding: clamp(8px, 2.5vw, 12px);
+  border-radius: 10px; /* Bordas mais arredondadas */
+  width: clamp(280px, 85vw, 340px); /* Ligeiramente maior */
+  margin-bottom: clamp(15px, 4vw, 20px);
   z-index: 1;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  gap: clamp(8px, 2vw, 10px); /* Espaçamento interno */
 }
 
 .music-player img {
-  width: 40px;
-  height: 40px;
-  border-radius: 5px;
-  margin-right: 10px;
+  width: clamp(40px, 12vw, 50px); /* Imagem maior para destaque */
+  height: clamp(40px, 12vw, 50px);
+  border-radius: 8px; /* Bordas mais suaves */
+  object-fit: cover;
 }
 
 .music-info {
   flex-grow: 1;
   color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .music-info p {
   margin: 0;
-  font-size: 14px;
+  font-size: clamp(13px, 3.8vw, 15px); /* Tamanho mais legível */
 }
 
 .music-info .song-title {
   font-weight: bold;
+  margin-bottom: 2px;
 }
 
 .music-info .artist {
   color: #ffffff;
-  font-size: 12px;
+  font-size: clamp(11px, 3.2vw, 13px);
+  opacity: 0.9; /* Leve transparência para hierarquia visual */
 }
 
 .music-controls button {
   background: none;
   border: none;
   color: white;
-  font-size: 20px;
+  font-size: clamp(18px, 5.5vw, 22px); /* Ícone maior */
   cursor: pointer;
+  padding: clamp(8px, 2vw, 10px); /* Área de toque maior */
+  transition: transform 0.2s;
+}
+
+.music-controls button:hover {
+  transform: scale(1.1); /* Efeito suave ao tocar */
 }
 
 .slideshow {
-  width: 300px;
-  height: 420px;
+  width: clamp(280px, 85vw, 340px); /* Alinhado com o player */
+  height: clamp(360px, 110vw, 450px); /* Proporção ajustada */
   position: relative;
-  border-radius: 10px;
+  border-radius: 12px; /* Bordas mais suaves */
   overflow: hidden;
   z-index: 1;
+  margin-bottom: clamp(15px, 4vw, 20px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* Sombra para destaque */
 }
 
 .slideshow img {
@@ -108,62 +128,63 @@ body {
 }
 
 .text {
-  color: #fffefe; /* Ajustei a cor para contrastar com o fundo rosa */
-  margin-top: 20px;
-  font-size: 24px;
+  color: #fffefe;
+  font-size: clamp(22px, 6vw, 28px); /* Tamanho mais impactante */
   text-align: center;
   z-index: 1;
 }
 
 .text-lindinha {
-  color: #ffffff; /* Ajustei a cor para contrastar com o fundo rosa */
-  margin-top: 20px;
-  font-size: 18px;
-  text-align: center;
+  color: #ffffff;
+  font-size: clamp(16px, 4.2vw, 20px); /* Tamanho mais delicado */
   text-align: justify;
-  width: 60%;
+  width: clamp(80%, 90vw, 95%);
   z-index: 1;
-  padding: 10px;
+  padding: clamp(10px, 3vw, 15px);
   box-sizing: border-box;
+  line-height: 1.6; /* Melhor legibilidade */
 }
 
 .buttons {
-  margin-top: 20px;
+  margin: clamp(15px, 4vw, 20px) 0;
   z-index: 1;
+  display: flex;
+  gap: clamp(10px, 3vw, 15px);
 }
 
 button {
-  padding: 10px 20px;
-  margin: 0 10px;
-  font-size: 16px;
+  padding: clamp(10px, 3vw, 12px) clamp(20px, 5vw, 25px);
+  font-size: clamp(15px, 4.5vw, 17px); /* Tamanho mais legível */
   cursor: pointer;
   border: none;
-  border-radius: 15px; /* Bordas mais arredondadas */
-  transition: transform 0.2s, box-shadow 0.2s; /* Animação suave */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  border-radius: 12px; /* Bordas mais suaves */
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  min-width: clamp(100px, 30vw, 120px); /* Botões mais largos */
+  min-height: 48px; /* Altura maior para toque */
 }
 
 #yesBtn {
-  background-color: #ff6f91; /* Rosa mais escuro para o "Sim" */
+  background-color: #d53a5e;
   color: white;
 }
 
 #yesBtn:hover {
-  transform: scale(1.05); /* Leve aumento ao passar o mouse */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra mais intensa */
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 #noBtn {
-  background-color: #d3d3d3; /* Cinza claro para o "Não" */
+  background-color: #d3d3d3;
   color: #d31414;
   cursor: not-allowed;
 }
 
 .message {
   display: none;
-  color: #ff4d4d; /* Ajustei a cor para combinar com o tema */
-  margin-top: 20px;
-  font-size: 20px;
+  color: #ff4d4d;
+  margin: clamp(15px, 4vw, 20px) 0;
+  font-size: clamp(16px, 4.8vw, 18px);
   text-align: center;
   z-index: 1;
 }
@@ -174,16 +195,17 @@ button {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(255, 111, 145, 0.9); /* Fundo rosa semi-transparente */
+  background-color: #dd6a85;
   color: white;
-  padding: 20px 40px;
+  padding: clamp(20px, 5vw, 25px) clamp(35px, 10vw, 45px);
   border-radius: 15px;
   text-align: center;
-  font-size: 24px;
+  font-size: clamp(20px, 6vw, 24px); /* Tamanho mais impactante */
   font-weight: bold;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
   z-index: 10;
-  animation: fadeInOut 3s ease-in-out forwards;
+  animation: fadeInOut 7s ease-in-out forwards;
+  width: 350px;
 }
 
 @keyframes fadeInOut {

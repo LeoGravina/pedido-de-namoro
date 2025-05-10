@@ -40,7 +40,7 @@ function createHeart() {
   const heart = document.createElement('div');
   heart.classList.add('heart');
   heart.innerHTML = '❤️';
-  const centerRange = 40; // Concentrando os corações entre 30% e 70% da largura da tela
+  const centerRange = 90;
   heart.style.left = (Math.random() * centerRange + (50 - centerRange / 2)) + 'vw';
   heart.style.animationDuration = Math.random() * 3 + 2 + 's';
   document.body.appendChild(heart);
