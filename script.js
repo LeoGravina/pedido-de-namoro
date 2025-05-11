@@ -40,7 +40,7 @@ function createHeart() {
   const heart = document.createElement('div');
   heart.classList.add('heart');
   heart.innerHTML = '❤️';
-  const centerRange = 30;
+  const centerRange = 100;
   heart.style.left = (Math.random() * centerRange + (50 - centerRange / 2)) + 'vw';
   heart.style.animationDuration = Math.random() * 3 + 2 + 's';
   document.body.appendChild(heart);
