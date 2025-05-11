@@ -4,7 +4,7 @@ body {
   align-items: center;
   min-height: 100vh;
   margin: 0;
-  background-color: #c28f98; /* Rosa bebê */
+  background-color: #c28f98;
   font-family: Arial, sans-serif;
   position: relative;
   padding: clamp(15px, 4vw, 20px) 0;
@@ -13,55 +13,69 @@ body {
   padding-top: env(safe-area-inset-top);
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
 .heart {
   position: fixed;
-  font-size: clamp(14px, 3.5vw, 16px); /* Tamanho mais delicado */
+  font-size: clamp(12px, 3.5vw, 18px); /* Variedade de tamanhos */
   color: #ff4d4d;
   opacity: 0.7;
   animation: fall linear forwards;
   pointer-events: none;
+  animation-duration: calc(5s + (random() * 3s)); /* Velocidade variável */
 }
 
 @keyframes fall {
   0% {
-    transform: translateY(-10vh);
+    transform: translateY(-10vh) rotate(0deg);
     opacity: 0.7;
   }
   100% {
-    transform: translateY(110vh);
+    transform: translateY(110vh) rotate(360deg); /* Rotação para mais dinamismo */
     opacity: 0;
   }
 }
 
 .quote {
   color: #ffffff;
-  font-size: clamp(18px, 5.5vw, 22px); /* Tamanho mais elegante */
+  font-size: clamp(18px, 5.5vw, 22px);
   font-style: italic;
   text-align: center;
   margin-bottom: clamp(15px, 4vw, 20px);
   z-index: 1;
   max-width: 90%;
-  line-height: 1.5; /* Melhor legibilidade */
+  line-height: 1.5;
   padding: 0 clamp(10px, 2vw, 15px);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Melhora legibilidade */
 }
 
 .music-player {
   display: flex;
   align-items: center;
-  background-color: #722294; /* Cor original */
+  background-color: #b46ed2;
   padding: clamp(8px, 2.5vw, 12px);
-  border-radius: 10px; /* Bordas mais arredondadas */
-  width: clamp(280px, 85vw, 340px); /* Ligeiramente maior */
-  margin-bottom: clamp(15px, 4vw, 20px);
+  border-radius: 10px;
+  width: clamp(260px, 80vw, 320px); /* Ajuste para telas menores */
+  margin-bottom: clamp(20px, 5vw, 25px); /* Mais espaço abaixo */
   z-index: 1;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
-  gap: clamp(8px, 2vw, 10px); /* Espaçamento interno */
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  gap: clamp(8px, 2vw, 10px);
 }
 
 .music-player img {
-  width: clamp(40px, 12vw, 50px); /* Imagem maior para destaque */
+  width: clamp(40px, 12vw, 50px);
   height: clamp(40px, 12vw, 50px);
-  border-radius: 8px; /* Bordas mais suaves */
+  border-radius: 8px;
   object-fit: cover;
 }
 
@@ -75,7 +89,7 @@ body {
 
 .music-info p {
   margin: 0;
-  font-size: clamp(13px, 3.8vw, 15px); /* Tamanho mais legível */
+  font-size: clamp(13px, 3.8vw, 15px);
 }
 
 .music-info .song-title {
@@ -86,32 +100,32 @@ body {
 .music-info .artist {
   color: #ffffff;
   font-size: clamp(11px, 3.2vw, 13px);
-  opacity: 0.9; /* Leve transparência para hierarquia visual */
+  opacity: 0.9;
 }
 
 .music-controls button {
   background: none;
   border: none;
   color: white;
-  font-size: clamp(18px, 5.5vw, 22px); /* Ícone maior */
+  font-size: clamp(18px, 5.5vw, 22px);
   cursor: pointer;
-  padding: clamp(8px, 2vw, 10px); /* Área de toque maior */
+  padding: clamp(8px, 2vw, 10px);
   transition: transform 0.2s;
 }
 
 .music-controls button:hover {
-  transform: scale(1.1); /* Efeito suave ao tocar */
+  transform: scale(1.1);
 }
 
 .slideshow {
-  width: clamp(280px, 85vw, 340px); /* Alinhado com o player */
-  height: clamp(360px, 110vw, 450px); /* Proporção ajustada */
+  width: clamp(260px, 80vw, 320px); /* Ajuste para telas menores */
+  height: clamp(340px, 100vw, 420px); /* Proporção ajustada */
   position: relative;
-  border-radius: 12px; /* Bordas mais suaves */
+  border-radius: 12px;
   overflow: hidden;
   z-index: 1;
-  margin-bottom: clamp(15px, 4vw, 20px);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* Sombra para destaque */
+  margin-bottom: clamp(20px, 5vw, 25px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
 
 .slideshow img {
@@ -119,30 +133,36 @@ body {
   height: 100%;
   object-fit: cover;
   position: absolute;
+  top: 0;
+  left: 0;
   opacity: 0;
-  transition: opacity 1s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
 }
 
 .slideshow img.active {
   opacity: 1;
 }
 
-.text {
-  color: #fffefe;
-  font-size: clamp(22px, 6vw, 28px); /* Tamanho mais impactante */
-  text-align: center;
-  z-index: 1;
-}
-
 .text-lindinha {
   color: #ffffff;
-  font-size: clamp(16px, 4.2vw, 20px); /* Tamanho mais delicado */
+  font-size: clamp(16px, 4.2vw, 20px);
   text-align: justify;
   width: clamp(80%, 90vw, 95%);
   z-index: 1;
   padding: clamp(10px, 3vw, 15px);
   box-sizing: border-box;
-  line-height: 1.6; /* Melhor legibilidade */
+  line-height: 1.6;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.text {
+  color: #fffefe;
+  font-size: clamp(22px, 6vw, 28px);
+  text-align: center;
+  z-index: 1;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin: clamp(10px, 3vw, 15px) 0;
 }
 
 .buttons {
@@ -154,14 +174,14 @@ body {
 
 button {
   padding: clamp(10px, 3vw, 12px) clamp(20px, 5vw, 25px);
-  font-size: clamp(15px, 4.5vw, 17px); /* Tamanho mais legível */
+  font-size: clamp(15px, 4.5vw, 17px);
   cursor: pointer;
   border: none;
-  border-radius: 12px; /* Bordas mais suaves */
+  border-radius: 12px;
   transition: transform 0.2s, box-shadow 0.2s;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-  min-width: clamp(100px, 30vw, 120px); /* Botões mais largos */
-  min-height: 48px; /* Altura maior para toque */
+  min-width: clamp(100px, 30vw, 120px);
+  min-height: 48px;
 }
 
 #yesBtn {
@@ -174,10 +194,21 @@ button {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
+#yesBtn:active {
+  animation: pulse 0.3s ease-in-out; /* Efeito de pulsar ao clicar */
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
 #noBtn {
   background-color: #d3d3d3;
   color: #d31414;
   cursor: not-allowed;
+  opacity: 0.6; /* Feedback visual mais claro */
 }
 
 .message {
@@ -200,17 +231,9 @@ button {
   padding: clamp(20px, 5vw, 25px) clamp(35px, 10vw, 45px);
   border-radius: 15px;
   text-align: center;
-  font-size: clamp(20px, 6vw, 24px); /* Tamanho mais impactante */
+  font-size: clamp(20px, 6vw, 24px);
   font-weight: bold;
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
   z-index: 10;
-  animation: fadeInOut 7s ease-in-out forwards;
-  width: 350px;
-}
-
-@keyframes fadeInOut {
-  0% { opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { opacity: 0; }
+  width: 300px;
 }

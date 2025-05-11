@@ -1,53 +1,49 @@
-const images = document.querySelectorAll('.slideshow img');
-let currentIndex = 0;
-
-function changeImage() {
-  images[currentIndex].classList.remove('active');
-  currentIndex = (currentIndex + 1) % images.length;
-  images[currentIndex].classList.add('active');
-}
-
-setInterval(changeImage, 3000);
-
+let slideIndex = 0;
+const slides = document.querySelectorAll('.slideshow img');
 const yesBtn = document.getElementById('yesBtn');
-const message = document.getElementById('message');
 const loveMessage = document.getElementById('loveMessage');
 
-yesBtn.addEventListener('click', () => {
-  message.style.display = 'block';
-  loveMessage.style.display = 'block';
-  setTimeout(() => {
-    loveMessage.style.display = 'none';
-  }, 12000); // A mensagem some após 12 segundos
-});
+// Função para o slideshow
+function showSlides() {
+  slides.forEach(slide => slide.classList.remove('active'));
+  slideIndex = (slideIndex + 1) % slides.length;
+  slides[slideIndex].classList.add('active');
+}
 
-const audio = document.getElementById('audio');
-const playPauseBtn = document.getElementById('playPauseBtn');
-let isPlaying = false;
+setInterval(showSlides, 3000);
 
-playPauseBtn.addEventListener('click', () => {
-  if (isPlaying) {
-    audio.pause();
-    playPauseBtn.textContent = '▶️';
-  } else {
-    audio.play();
-    playPauseBtn.textContent = '⏸️';
-  }
-  isPlaying = !isPlaying;
-});
-
+// Função para criar corações caindo
 function createHeart() {
   const heart = document.createElement('div');
   heart.classList.add('heart');
   heart.innerHTML = '❤️';
-  const centerRange = 90;
-  heart.style.left = (Math.random() * centerRange + (50 - centerRange / 2)) + 'vw';
-  heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+  heart.style.left = `${Math.random() * 100}vw`;
   document.body.appendChild(heart);
-
-  setTimeout(() => {
-    heart.remove();
-  }, 5000);
+  setTimeout(() => heart.remove(), 8000);
 }
 
-setInterval(createHeart, 300);
+setInterval(createHeart, 500);
+
+// Função para o player de música
+const audio = document.getElementById('audio');
+const playPauseBtn = document.getElementById('playPauseBtn');
+
+playPauseBtn.addEventListener('click', () => {
+  if (audio.paused) {
+    audio.play();
+    playPauseBtn.innerHTML = '⏸️';
+  } else {
+    audio.pause();
+    playPauseBtn.innerHTML = '▶️';
+  }
+});
+
+// Função para exibir mensagem com confete
+yesBtn.addEventListener('click', () => {
+  loveMessage.style.display = 'block';
+  confetti({
+    particleCount: 100,
+    spread: 70,
+    origin: { y: 0.6 }
+  });
+});
